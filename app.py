@@ -43,6 +43,7 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 def predict_image(image_path):
     image = Image.open(image_path).convert("RGB")  # Open image
     print(image.size)
+    image = Image.open(image_path).convert("RGB").resize((224, 224))
     print(f"Image size: {image.size}, Mode: {image.mode}")
     image = transform(image).unsqueeze(0).to(device)  # Preprocess
 
